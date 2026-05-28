@@ -1,0 +1,7 @@
+names:
+- number
+nc: 1
+path: /Users/hedwig_industries/Desktop/cs-cv-spring-2026/solutions/lab2/data/numberdetection
+test: /kaggle/input/datasets/rustamkadyrov/lab2-numberdetection/numberdetection/test/images
+train: /kaggle/input/datasets/rustamkadyrov/lab2-numberdetection/numberdetection/train/images
+val: /kaggle/input/datasets/rustamkadyrov/lab2-numberdetection/numberdetection/valid/images
