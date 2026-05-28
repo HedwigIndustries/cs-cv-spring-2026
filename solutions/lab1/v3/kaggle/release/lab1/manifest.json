@@ -1,0 +1,59 @@
+{
+  "task": "DVM car color classification",
+  "classes": [
+    "beige",
+    "black",
+    "blue",
+    "brown",
+    "green",
+    "grey",
+    "orange",
+    "red",
+    "silver",
+    "white",
+    "yellow"
+  ],
+  "img_size": 64,
+  "imagenet_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "imagenet_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "hyperparams": {
+    "batch": 256,
+    "epochs": 30,
+    "optimizer": "AdamW",
+    "scheduler": "CosineAnnealingLR",
+    "amp": true
+  },
+  "best_model": "myresnet",
+  "best_checkpoint": "myresnet_best.pt",
+  "eval_metrics": {
+    "myresnet": {
+      "best_F1_macro": 0.814,
+      "final_F1_macro": 0.8119,
+      "precision_macro": 0.8306,
+      "recall_macro": 0.804,
+      "epochs": 30
+    },
+    "resnet18": {
+      "best_F1_macro": 0.5186,
+      "final_F1_macro": 0.5186,
+      "precision_macro": 0.5024,
+      "recall_macro": 0.5843,
+      "epochs": 30
+    },
+    "mobilenetv3": {
+      "best_F1_macro": 0.416,
+      "final_F1_macro": 0.4094,
+      "precision_macro": 0.4016,
+      "recall_macro": 0.4884,
+      "epochs": 30
+    }
+  }
+}
