@@ -1,0 +1,29 @@
+{
+  "task": "WGAN-GP CelebA face generation",
+  "arch": "DCGAN-style 5-stage, Generator BN+ReLU, Critic spectral_norm + LeakyReLU",
+  "conditional_mode": "concat conditioning (gender embed)",
+  "preprocessing": "MTCNN bbox + expand 1.35 + Resize 64x64 (fallback CenterCrop 178)",
+  "img_size": 64,
+  "z_dim": 128,
+  "ngf": 64,
+  "ndf": 64,
+  "emb_dim": 32,
+  "hyperparams": {
+    "lr_gen": 0.0002,
+    "lr_crit": 0.0001,
+    "batch": 128,
+    "epochs": 15,
+    "gp_interval": 4,
+    "gp_lambda": 10,
+    "betas": [
+      0.0,
+      0.9
+    ]
+  },
+  "fid_real_stats": "real_inception_stats.npz",
+  "fid_real_n": 5000,
+  "checkpoints": {
+    "unconditional": "unconditional.pkl",
+    "conditional": "conditional.pkl"
+  }
+}
