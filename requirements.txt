@@ -1,7 +1,4 @@
-# Общие зависимости для всех 5 лаб (CV ИТМО Spring 2026).
-# Версии — стабильные на момент написания (май 2026), при необходимости подкорректировать под локальное окружение.
-
-# === ядро ===
+# core
 torch>=2.3
 torchvision>=0.18
 numpy>=1.26
@@ -10,26 +7,23 @@ matplotlib>=3.8
 Pillow>=10.0
 tqdm>=4.66
 
-# === lab1: классификация ===
-scikit-learn>=1.4              # f1_score, train_test_split, classification_report
+# lab1
+scikit-learn>=1.4
 
-# === lab2 + lab3: YOLO ===
-ultralytics>=8.3               # YOLOv8n (lab2), YOLO11n-seg (lab3) + трекеры (BotSORT/ByteTrack)
-opencv-python>=4.10            # cv2 для пред/постпроцессинга и видеозаписи
-pyyaml>=6.0                    # data.yaml rewriting в lab2, VIA -> YOLO seg config в lab3
-kagglehub>=0.3                 # скачка датасетов локально (на Kaggle уже attached)
+# lab2 + lab3
+ultralytics>=8.3
+opencv-python>=4.10
+pyyaml>=6.0
+kagglehub>=0.3
 
-# === lab4: WGAN-GP ===
-scipy>=1.13                    # Laplacian variance, FID (через torchmetrics)
-torchmetrics>=1.4              # FID / Inception Score
+# lab4
+scipy>=1.13
+torchmetrics>=1.4
 
-# === lab5: LoRA DreamBooth ===
-diffusers>=0.30                # StableDiffusionPipeline, UNet2DConditionModel, схедулеры
-peft>=0.13                     # LoRA адаптеры
-transformers>=4.40             # CLIPTextModel, CLIPModel, CLIPProcessor
-safetensors>=0.4               # загрузка/сохранение LoRA весов
-accelerate>=0.30               # требуется diffusers
-huggingface_hub>=0.23          # требуется diffusers
-
-# === опционально (только если запускаешь Kaggle CLI локально) ===
-# kaggle>=1.6                  # для kaggle kernels pull / output
+# lab5
+diffusers>=0.30
+peft>=0.13
+transformers>=4.40
+safetensors>=0.4
+accelerate>=0.30
+huggingface_hub>=0.23

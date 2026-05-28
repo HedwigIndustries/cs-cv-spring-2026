@@ -1,7 +1,4 @@
-# Git LFS — большие бинарные файлы хранятся отдельно, в git только указатели.
-# Перед первым коммитом: brew install git-lfs && git lfs install
-
-# чекпойнты моделей
+# checkpoints
 *.pt        filter=lfs diff=lfs merge=lfs -text
 *.pth       filter=lfs diff=lfs merge=lfs -text
 *.pkl       filter=lfs diff=lfs merge=lfs -text
@@ -10,10 +7,10 @@
 *.ckpt      filter=lfs diff=lfs merge=lfs -text
 *.onnx      filter=lfs diff=lfs merge=lfs -text
 
-# большие numpy-артефакты (например inception stats)
+# numpy
 *.npz       filter=lfs diff=lfs merge=lfs -text
 
-# изображения
+# images
 *.jpg       filter=lfs diff=lfs merge=lfs -text
 *.jpeg      filter=lfs diff=lfs merge=lfs -text
 *.png       filter=lfs diff=lfs merge=lfs -text
@@ -21,12 +18,12 @@
 *.svg       filter=lfs diff=lfs merge=lfs -text
 *.pdf       filter=lfs diff=lfs merge=lfs -text
 
-# видео и большие медиа
+# video
 *.mp4       filter=lfs diff=lfs merge=lfs -text
 *.mov       filter=lfs diff=lfs merge=lfs -text
 *.avi       filter=lfs diff=lfs merge=lfs -text
 *.webm      filter=lfs diff=lfs merge=lfs -text
 
-# жирные ноутбуки с embedded outputs (графики, инференс)
+# notebooks with outputs
 solutions/lab*/v*/kaggle/lab*-kaggle*.ipynb filter=lfs diff=lfs merge=lfs -text
 solutions/lab*/results.ipynb filter=lfs diff=lfs merge=lfs -text

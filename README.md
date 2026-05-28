@@ -4,92 +4,62 @@
 
 ## Лабораторные
 
-| # | Тема | Ключевая метрика | Цель ТЗ | Папка |
-|---|---|---|---|---|
-| 1 | Классификация цвета авто (DVM) | F1_macro **0.814** (MyResNet) | > 0.8 | [solutions/lab1/](solutions/lab1/) |
-| 2 | Детекция номеров (SVHN) | mAP@50 **0.877** (YOLOv8n) | ≥ 0.6 | [solutions/lab2/](solutions/lab2/) |
-| 3 | Сегментация знаков + трекинг | mask_mAP@50 **0.815** (YOLO11n-seg) | — | [solutions/lab3/](solutions/lab3/) |
-| 4 | Генерация лиц CelebA (WGAN-GP) | FID **52.99** (cond_mixed) | FID + IS | [solutions/lab4/](solutions/lab4/) |
-| 5 | LoRA DreamBooth (SD1.5) | ΔCLIP-I **+0.143** | CLIP-T/I/Sharpness | [solutions/lab5/](solutions/lab5/) |
 
-В каждой папке:
-- `README.md` — подход, структура, как запустить, результаты
-- `speech.md` — речь к защите
-- `results.ipynb` — графики, метрики, демо (запуск локально)
-- `v3/kaggle/` — train-ноутбук + артефакты с Kaggle
+| # | Тема | Папка |
+|---|---|---|
+| 1 | color classification | [solutions/lab1/](solutions/lab1/) |
+| 2 | number detection | [solutions/lab2/](solutions/lab2/) |
+| 3 | sign segmentation | [solutions/lab3/](solutions/lab3/) |
+| 4 | face generation | [solutions/lab4/](solutions/lab4/) |
+| 5 | text2img | [solutions/lab5/](solutions/lab5/) |
 
-## Стек
-
-- PyTorch 2.x, torchvision
-- Ultralytics (YOLOv8 / YOLO11)
-- Diffusers + PEFT (LoRA), Transformers
-- scikit-learn, scipy, OpenCV, facenet-pytorch
-- См. [requirements.txt](requirements.txt)
-
-## Большие файлы
-
-Веса моделей, видео и embedded outputs хранятся через **Git LFS** (см. [.gitattributes](.gitattributes)). Перед клонированием: `brew install git-lfs && git lfs install`.
-
----
-
-## Условия курса
-
-- 5 обязательных лабораторных, всего **50 баллов**
-- **16.04 — зачёт** (20 баллов); до зачёта допускаются сдавшие 4 лабы (или 3 + доклад для магистров)
-- Возможен доклад на 15 минут, **5-15 баллов**
-- Штраф за просрочку каждые 2 недели: 10 / 7.5 / 5 / 3.5
-
-**Дедлайны (бакалавры):**
-
-| Лаба | Дедлайн | Лаба | Дедлайн |
-|---|---|---|---|
-| Лаб 1 (классификация) | 19.02 | Лаб 4 (генерация) | 12.03 |
-| Лаб 2 (детекция) | 26.02 | Лаб 5 (text2img) | 26.03 |
-| Лаб 3 (сегментация) | 5.03 | | |
-
-Лабы дешевеют каждую неделю на 1.5 балла: **15 → 13.5 → 12 → 10.5 → 9** (минимум).
-
----
 
 ## ТЗ по лабораторным
 
-### Лаб 1 — Классификация цвета авто (10 баллов, дедлайн 19.02)
+### Лаб 1 — Классификация цвета авто
 
 Датасет: [DVM](https://deepvisualmarketing.github.io/) (фронтальные виды).
 
-1. Написать **свой** классификатор (ResNet / Inception / DenseNet / MobileNet / ShuffleNet) и обучить на DVM
-2. Взять **2 предобученных** на ImageNet и дообучить — сравнить
-3. Метрика — **F1_macro**, требуется **> 0.8**
+1. Написать свой классификатор (ResNet / InceptionV3 / DenseNet / MobileNet / ShuffleNet) и обучить на DVM.
+2. Взять 2 предобученных классификатора (ImageNet или другой) и дообучить на DVM.
+3. Метрика F1_macro > 0.8.
+4. Сравнить все классификаторы и сделать вывод.
 
-### Лаб 2 — Детекция номеров (10 баллов, дедлайн 19.02)
+### Лаб 2 — Детекция номеров
 
-1. Обучить нейросеть детектировать номера на изображениях
-2. Снять **5-10 уличных фото** (не из Интернета) и прогнать модель
-3. Оценить **IoU, Precision, Recall, mAP** на [SVHN](http://ufldl.stanford.edu/housenumbers/) — требуется **mAP ≥ 0.6**
-4. Pre-train можно сделать на [NumberDetection (Roboflow)](https://universe.roboflow.com/university-of-toronto-xho85/numberdetection-eppfj/dataset/2)
+Датасеты: [SVHN](http://ufldl.stanford.edu/housenumbers/) (тест), опционально pre-train на [NumberDetection (Roboflow)](https://universe.roboflow.com/university-of-toronto-xho85/numberdetection-eppfj/dataset/2).
 
-### Лаб 3 — Сегментация дорожных знаков + трекинг (10 баллов, дедлайн 26.02)
+1. Обучить (или дообучить) нейросеть детектировать номера на изображениях (последовательность до 20 символов: цифры, буквы рус/англ алфавита, дефис, слеш).
+2. Снять 5-10 уличных фотографий (не из Интернета), разнообразные планы (крупные, средние, мелкие), прогнать модель.
+3. Оценить IoU, Precision, Recall, mAP на SVHN test. Требуется mAP ≥ 0.6.
+4. Опционально предобучить на NumberDetection (Roboflow).
+5. Сделать вывод.
 
-1. Сегментация **8 типов знаков** на [Russian Road Signs](https://www.kaggle.com/datasets/viacheslavshalamov/russian-road-signs-segmentation-dataset). Можно MMSegmentation или YOLOv11
-2. **Тестирование на 3+ собственных видео по 30+ секунд** (около ИТМО)
-3. Метрики: IoU, Precision, Recall, L2 + процент IoU ≥ 0.5 / 0.75 / 0.9
-4. **Трекинг:** два любых алгоритма, метрика **ID Switches**
+### Лаб 3 — Сегментация дорожных знаков + трекинг
 
-### Лаб 4 — Генерация лиц CelebA (10 баллов, дедлайн 12.03)
+Датасет: [Russian Road Signs](https://www.kaggle.com/datasets/viacheslavshalamov/russian-road-signs-segmentation-dataset) (~100K изображений). Можно MMSegmentation, YOLOv11 и др.
+
+1. Сегментация 8 типов знаков.
+2. Тестирование на 3+ собственных видео по 30+ секунд (около Университета ИТМО или в других узнаваемых местах).
+3. Оценка IoU, Precision, Recall, L2 — отдельно на val Russian Road Signs и собственных фотографиях. Процент изображений с IoU ≥ 0.5 / 0.75 / 0.9.
+4. Трекинг: 2 любых алгоритма на видео, метрика ID Switches.
+
+### Лаб 4 — Генерация лиц CelebA
 
 Датасет: [CelebA](https://www.kaggle.com/datasets/jessicali9530/celeba-dataset).
 
-1. Детектор/сегментатор лица для препроцессинга
-2. Обучить **VAE или GAN** (рекомендуется WGAN) для **безусловной** генерации
-3. Преобразовать в **условную** (по полу)
-4. Метрики: **FID + IS**, кривые обучения
+1. Препроцессинг: детектор/сегментатор для вырезания лиц. Опционально face alignment.
+2. Обучить VAE или GAN для безусловной генерации лиц (рекомендуется WGAN).
+3. Преобразовать в условную (по полу или другому признаку), обучить.
+4. Метрики FID + IS, показать кривые обучения.
 
-### Лаб 5 — Text2img самогенерация (10 баллов, дедлайн 26.03)
+### Лаб 5 — Text2img
 
-Через предобученную text2img-модель — сгенерировать фотографии себя в разном окружении.
+Предобученная text2img-модель — сгенерировать фотографии себя в разном окружении (киберпанк, металл, эльфийский город и пр.).
 
-1. **5 качественных изображений** с портретным сходством
-2. `<токен> in a forest/city/beach` с уточнениями `high quality, realism`
-3. `<пол> in a forest/city/beach` (модель не должна разучиться генерировать других людей)
-4. **Запрещено:** img2img, негативные prompts, API, веб-сервисы
-5. Оценка **3 мерами** (не FID/IS) с обоснованием выбора
+1. Показать 5 качественных изображений себя с сохранением портретного сходства.
+2. Сгенерировать по тексту "<ваш токен> in a forest / city / beach" с уточнениями "high quality, realism" или подобными.
+3. Сгенерировать по тексту "<ваш пол> in a forest / city / beach" с уточнениями "high quality, realism". Модель не должна разучиться генерировать других людей.
+4. Не использовать: img2img, негативные промпты, API, веб-сервисы.
+5. Оценить качество 3 мерами (не FID, IS) и обосновать выбор.
+

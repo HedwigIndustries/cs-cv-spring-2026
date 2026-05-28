@@ -1,7 +1,7 @@
 # datasets
 solutions/lab*/data/
 
-# inference io
+# output
 solutions/lab*/output/*
 !solutions/lab*/output/.gitkeep
 
@@ -14,17 +14,17 @@ __pycache__/
 # jupyter
 .ipynb_checkpoints/
 
-# kaggle artifacts that auto-regenerate
+# pretrained, not ours
 solutions/lab*/v*/kaggle/release/**/yolo*n.pt
 solutions/lab*/v*/kaggle/release/**/*.log
 
-# etc
+# misc
 .DS_Store
 
 # secrets
 **/.env
 **/.env.*
 
-# черновики / личное (не для коммита)
+# personal
 solutions/lab*/speech.md
 solutions/lab*/correctness.md
