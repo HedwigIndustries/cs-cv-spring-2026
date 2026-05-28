@@ -5,13 +5,13 @@
 ## Лабораторные
 
 
-| # | Тема | Папка |
-|---|---|---|
-| 1 | color classification | [solutions/lab1/](solutions/lab1/) |
-| 2 | number detection | [solutions/lab2/](solutions/lab2/) |
-| 3 | sign segmentation | [solutions/lab3/](solutions/lab3/) |
-| 4 | face generation | [solutions/lab4/](solutions/lab4/) |
-| 5 | text2img | [solutions/lab5/](solutions/lab5/) |
+| #   | Тема                 | Папка                              |
+| --- | -------------------- | ---------------------------------- |
+| 1   | color classification | [solutions/lab1/](solutions/lab1/) |
+| 2   | number detection     | [solutions/lab2/](solutions/lab2/) |
+| 3   |                     | [solutions/lab3/](solutions/lab3/) |
+| 4   | face generation      | [solutions/lab4/](solutions/lab4/) |
+| 5   | text2img             | [solutions/lab5/](solutions/lab5/) |
 
 
 ## ТЗ по лабораторным
