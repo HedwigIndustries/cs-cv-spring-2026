@@ -1,0 +1,23 @@
+{
+  "task": "LoRA-DreamBooth SD1.5 fine-tune",
+  "base_model": "runwayml/stable-diffusion-v1-5",
+  "instance_prompt": "a photo of ohwx man",
+  "class_prompt": "a photo of a man",
+  "img_size": 512,
+  "hyperparams": {
+    "lora_r": 16,
+    "lora_alpha": 16,
+    "target_modules": [
+      "to_k",
+      "to_q",
+      "to_v",
+      "to_out.0"
+    ],
+    "steps": 1000,
+    "lr": 0.0001,
+    "batch": 1,
+    "prior_weight": 0.5,
+    "n_class_images": 100
+  },
+  "lora_path": "checkpoints/lora_weights/pytorch_lora_weights.safetensors"
+}
